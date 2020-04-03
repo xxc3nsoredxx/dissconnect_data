@@ -1,1 +1,1 @@
-# Data storage to be ussed on Google Collab
+# Data storage to be used on Google Collab

@@ -15,7 +15,7 @@ Push to github
 
 Download:
 # Proble for the downloaded marker file
-if [ ! -e .ok ]; then
+if [ ! -e dl.ok ]; then
     # Gets the index of files to download and passes it on
     ( (wget -nv -O - --show-progress \
         https://raw.githubusercontent.com/xxc3nsoredxx/dissconnect_data/2afe781db2d2a17b9efab0c50294f8ffb554f6ac/allclean_b64_split/index.html | \
@@ -27,9 +27,10 @@ if [ ! -e .ok ]; then
         # Once enough data has stramed in:
         #   * Undoes the base64 encoding and passes it on to tar
         #   * tar both un-xz's and un-tars one dataset
+        base64 -d -w 0 | tar xJ --strip=1) && \
         # Once all the datasets are downloaded, it compares the downloaded md5
         # hashes for each, if they mach the marker file is created
-        base64 -d -w 0 | tar xJ --strip=1) && md5sum -c allclean.md5 && touch .ok) || \
+        md5sum -c allclean.md5 && touch dl.ok) || \
     (echo "Error downloading files, try again later"; rm *all*; exit 1)
 
     # If the dowload was a success, create the merged csv file used later on

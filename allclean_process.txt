@@ -14,12 +14,12 @@ Create:
 Push to github
 
 Download:
-if [ ! -e allclean.md5 ]; then
+if [ ! -e .ok ]; then
     ( (wget -nv -O - --show-progress \
         https://raw.githubusercontent.com/xxc3nsoredxx/dissconnect_data/2afe781db2d2a17b9efab0c50294f8ffb554f6ac/allclean_b64_split/index.html | \
         wget -nv -i - --force-html \
         -B https://raw.githubusercontent.com/xxc3nsoredxx/dissconnect_data/ad4dfb51adf657d23e173f4a28a9b740b83c2841/allclean_b64_split/ \
         -O - --show-progress | \
-        base64 -d -w 0 | tar xJ --strip=1) && md5sum -c allclean.md5) || \
+        base64 -d -w 0 | tar xJ --strip=1) && md5sum -c allclean.md5 && touch .ok) || \
     (echo "Error downloading files, try again later"; rm *all*; exit 1)
 fi

@@ -5,4 +5,4 @@
 !all*.txt
 !all*/
 !all*/*.tx64.*
-!index.txt
+!index.html

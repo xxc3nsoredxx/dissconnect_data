@@ -7,3 +7,16 @@ Create:
     cd allclean_b64_split
     split -a 3 -b 10M -d ../allclean.txz.b64 allclean.tx64. & \
         pv -d $(pgrep split):0
+    ls > index.html
+    sed -i -ne '/index/ d; s/.*/<a href="&"><\/a>/; p' index.html
+
+Push to github
+
+Download:
+    wget -nv -O - \
+    https://raw.githubusercontent.com/xxc3nsoredxx/dissconnect_data/6c64098b7cd34c927c68857b8a9053c095ac2d59/allclean_b64_split/index.html \
+    | \
+    wget -nv -i - \ 
+    -B https://raw.githubusercontent.com/xxc3nsoredxx/dissconnect_data/ad4dfb51adf657d23e173f4a28a9b740b83c2841/allclean_b64_split/ \
+    -O - -np \
+    | base64 -d -w 0

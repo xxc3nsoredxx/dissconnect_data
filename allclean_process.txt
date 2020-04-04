@@ -31,7 +31,7 @@ if [ ! -e dl.ok ]; then
         # Once enough data has stramed in:
         #   * Undoes the base64 encoding and passes the result to tar
         #   * tar both un-xz's and un-tars a dataset as soon as it can
-        base64 -d -w 0 | tar xJU --overwrite --strip=1) && \
+        base64 -d -w 0 | tar xJU --strip=1) && \
         # Once all the datasets are downloaded, it compares the downloaded md5
         # hashes for each and creates the marker file on success
         md5sum -c allclean.md5 && touch dl.ok) || \

@@ -8,8 +8,8 @@ Create:
     cd allclean_b64_split
     split -a 3 -b 10M -d ../allclean.txz.b64 allclean.tx64. & \
         pv -d $(pgrep split):0
-    ls > index.html
-    sed -i -ne '/index/ d; s/.*/<a href="&"><\/a>/; p' index.html
+    ls > index.txt
+    sed -i -ne '/index/ d; p' index.txt
 
 Push to github
 
